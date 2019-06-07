@@ -2,6 +2,7 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,7 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -69,6 +70,7 @@ public class TechJobs {
         }
     }
 
+
     // ﻿Returns the key of the selected item from the choices Dictionary
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
@@ -103,14 +105,28 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
-    // Print a list of jobs
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+
+    // Print a list of jobs
+    private static void printJobs(ArrayList<HashMap<String, String>> Jobs) {
+
+        if (Jobs.size() != 0) {
+            for (int i = 0; i < Jobs.size(); i++) {
+                System.out.println("*****");
+                for (Map.Entry<String, String> job : Jobs.get(i).entrySet()) {
+
+
+                    System.out.println(job.getKey() + ":" + job.getValue());
+                }
+            }
+        } else {
+            System.out.println("Oh No! no jobs found :-(");
+
+        }
     }
 }
